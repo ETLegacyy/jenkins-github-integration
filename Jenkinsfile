@@ -54,52 +54,56 @@ pipeline {
     }
     
     post {
-        always {
-            echo 'Pipeline completed.'
-            emailext(
-                subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})",
-                body: """\
+    always {
+        echo 'Pipeline completed.'
+        emailext(
+            subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})",
+            body: """\
 Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})
 
 Build logs are attached.
 """,
-                to: "25872626+ETLegacyy@users.noreply.github.com",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                attachLog: true,
-                compressLog: true
-            )
-        }
-        
-        success {
-            echo 'Sending success notification email...'
-            emailext(
-                subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Succeeded",
-                body: """\
+            to: "ramimoukafi99@gmail.com",
+            from: "ramimoukafi99@gmail.com", // Ensure this is configured in Jenkins
+            recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+            attachLog: true,
+            compressLog: true
+        )
+    }
+    
+    success {
+        echo 'Sending success notification email...'
+        emailext(
+            subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Succeeded",
+            body: """\
 Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has succeeded.
 
 Build logs are attached.
 """,
-                to: "25872626+ETLegacyy@users.noreply.github.com",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                attachLog: true,
-                compressLog: true
-            )
-        }
-        
-        failure {
-            echo 'Sending failure notification email...'
-            emailext(
-                subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed",
-                body: """\
+            to: "ramimoukafi99@gmail.com",
+            from: "ramimoukafi99@gmail.com",
+            recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+            attachLog: true,
+            compressLog: true
+        )
+    }
+    
+    failure {
+        echo 'Sending failure notification email...'
+        emailext(
+            subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed",
+            body: """\
 Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has failed.
 
 Build logs are attached.
 """,
-                to: "25872626+ETLegacyy@users.noreply.github.com",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                attachLog: true,
-                compressLog: true
-            )
-        }
+            to: "ramimoukafi99@gmail.com",
+            from: "ramimoukafi99@gmail.com",
+            recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+            attachLog: true,
+            compressLog: true
+        )
     }
+}
+
 }
