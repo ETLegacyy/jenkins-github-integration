@@ -63,6 +63,7 @@ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})
 
 Build logs are attached.
 """,
+                to: "25872626+ETLegacyy@users.noreply.github.com",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 attachLog: true,
                 compressLog: true
@@ -78,6 +79,7 @@ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has succeeded.
 
 Build logs are attached.
 """,
+                to: "25872626+ETLegacyy@users.noreply.github.com",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 attachLog: true,
                 compressLog: true
@@ -93,6 +95,7 @@ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has failed.
 
 Build logs are attached.
 """,
+                to: "25872626+ETLegacyy@users.noreply.github.com",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 attachLog: true,
                 compressLog: true
