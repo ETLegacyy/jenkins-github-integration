@@ -58,7 +58,11 @@ pipeline {
             echo 'Pipeline completed.'
             emailext(
                 subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})",
-                body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})",
+                body: """\
+Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${currentBuild.result})
+
+Build logs are attached.
+""",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 attachLog: true,
                 compressLog: true
@@ -67,12 +71,32 @@ pipeline {
         
         success {
             echo 'Sending success notification email...'
-            // Mail function to send success email
+            emailext(
+                subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Succeeded",
+                body: """\
+Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has succeeded.
+
+Build logs are attached.
+""",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                attachLog: true,
+                compressLog: true
+            )
         }
         
         failure {
             echo 'Sending failure notification email...'
-            // Mail function to send failure email
+            emailext(
+                subject: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed",
+                body: """\
+Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has failed.
+
+Build logs are attached.
+""",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                attachLog: true,
+                compressLog: true
+            )
         }
     }
 }
