@@ -64,7 +64,6 @@ pipeline {
     Build logs are attached.
     """,
             to: "ramimoukafi99@gmail.com",
-            //recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
             attachLog: true,
             compressLog: true
         )
@@ -80,7 +79,6 @@ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has succeeded.
 Build logs are attached.
 """,
             to: "ramimoukafi99@gmail.com",
-            //recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
             attachLog: true,
             compressLog: true
         )
@@ -96,7 +94,6 @@ Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' has failed.
 Build logs are attached.
 """,
             to: "ramimoukafi99@gmail.com",
-            //recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
             attachLog: true,
             compressLog: true
         )
